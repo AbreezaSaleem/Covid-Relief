@@ -1,0 +1,18 @@
+@import url('https://fonts.googleapis.com/css2?family=Baloo+Paaji+2&display=swap');
+
+$background-color: #82ecff17;
+$primary-color: #17a2b8;
+$color-two: #00B9B9;
+$color-three: #3aceada1;
+$color-four: #78E098;
+$color-five: #B6EF81;
+$color-six: #F9F871;
+
+
+// Components
+@import "components/navbar";
+
+// Pages
+@import "pages/dashboard";
+
+@import '~bootstrap/scss/bootstrap.scss';

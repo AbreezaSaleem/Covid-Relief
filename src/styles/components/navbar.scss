@@ -1,0 +1,17 @@
+.navbar-container {
+  @keyframes slideDown {
+    100% {
+      transform: translateY(0);
+    }
+    0% {
+      transform: translateY(-100%);
+    }
+  }
+
+  background-color: $color-three;
+  border-radius: 0px 0px 10px 10px;
+  animation: 0.7s ease-out 0s 1 slideDown;
+
+  :hover {
+  }
+}
