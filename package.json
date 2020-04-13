@@ -7,6 +7,7 @@
     "@testing-library/react": "^9.3.2",
     "@testing-library/user-event": "^7.1.2",
     "bootstrap": "^4.4.1",
+    "google-maps-react": "^2.0.2",
     "node-sass": "^4.13.1",
     "react": "^16.13.1",
     "react-dom": "^16.13.1",
@@ -15,7 +16,7 @@
     "react-scripts": "3.4.1"
   },
   "scripts": {
-    "start": "react-scripts start",
+    "start": "react-scripts start REACT_APP_GOOLE_MAP_TOKEN=AIzaSyASl4lyuO8_aLBwXIrHmAq9_wdKuwg5Xg4",
     "build": "react-scripts build",
     "test": "react-scripts test",
     "eject": "react-scripts eject"

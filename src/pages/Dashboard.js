@@ -4,6 +4,7 @@ import { useNavigate } from 'react-router-dom';
 import logo from '../images/logo.svg'
 
 // components
+import Map from './Map';
 import Navbar from '../components/Navbar';
 
 function Dashboard() {
@@ -21,12 +22,13 @@ function Dashboard() {
           <div>Help us save lives</div>
           <button type="button">Donate Now!</button>
         </data>
+        <div className="map">
+          <Map />
+        </div>
         <div className="charities">
           charities
         </div>
-        <div className="map">
-          map
-        </div>
+        
       </div>
     </div>
   );
