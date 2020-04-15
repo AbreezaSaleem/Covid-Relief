@@ -1,17 +1,18 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 
 import logo from '../images/logo.svg'
 
-// components
-import Navbar from '../components/Navbar';
-
 function Dashboard() {
-  // const navigate = useNavigate();
+  const navigate = useNavigate();
+
+  const handleClick = event => {
+    event.preventDefault();
+    navigate('donate');
+  }
 
   return (
     <div className="container">
-      <Navbar />
       <div className="dashboard-container">
         <img className="logo" src={logo} />
         <div className="mission-statement">
@@ -19,7 +20,7 @@ function Dashboard() {
         </div>
         <data className="donate">
           <div>Help us save lives</div>
-          <button type="button">Donate Now!</button>
+          <button type="button" onClick={handleClick}>Donate Now!</button>
         </data>
         <div className="charities">
           charities
