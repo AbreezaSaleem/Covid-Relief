@@ -3,6 +3,8 @@ import { useNavigate } from 'react-router-dom';
 
 import logo from '../images/logo.svg'
 
+import Map from './Map';
+
 function Dashboard() {
   const navigate = useNavigate();
 
@@ -22,12 +24,13 @@ function Dashboard() {
           <div>Help us save lives</div>
           <button type="button" onClick={handleClick}>Donate Now!</button>
         </data>
+        <div className="map">
+          <Map />
+        </div>
         <div className="charities">
           charities
         </div>
-        <div className="map">
-          map
-        </div>
+        
       </div>
     </div>
   );
