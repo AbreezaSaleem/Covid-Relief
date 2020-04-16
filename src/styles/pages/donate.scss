@@ -1,0 +1,56 @@
+.donate-container {
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  margin: auto;
+  width: 70%;
+  align-items: center;
+  padding: 65px 0px;
+}
+
+.charity-list {
+  padding: 30px 0px;
+
+  & > li {
+    font-size: 23px;
+    transition: 0.3s;
+    background: #ffffff00;
+    padding-left: 10px;
+    border-radius: 10px;
+
+    &:hover {
+      cursor: pointer;
+      background: linear-gradient(90deg, rgba(36,33,0,1) 0%, rgba(120,224,152,1) 0%, rgba(224,255,0,0) 100%);
+    }
+  }
+}
+
+.form-container {
+  display: flex;
+  flex-direction: column;
+  width: 50%;
+
+  & > input {
+    border: 1px solid #8080804f;
+    border-radius: 5px;
+    margin-bottom: 20px;
+  }
+
+  & > label {
+    margin-bottom: 0px;
+  }
+
+  & > button {
+    margin: 30px 0px;
+    padding: 10px 0px;
+    font-size: 20px;
+    background: $color-three;
+    border-color: $color-three;
+    transition: 0.3s;
+
+    &:hover {
+      background: $primary-color;
+      border-color: $primary-color;
+    }
+  }
+}
