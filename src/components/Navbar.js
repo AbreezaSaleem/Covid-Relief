@@ -12,7 +12,7 @@ function Navbar() {
           <a className="nav-item nav-link" href="#">About</a>
           <a className="nav-item nav-link" href="#">Charities</a>
           <a className="nav-item nav-link" href="#">Map</a>
-          <a className="nav-item nav-link " href="#">Donate Now!</a>
+          <a className="nav-item nav-link " href="/donate">Donate Now!</a>
         </div>
       </div>
     </nav>
