@@ -14,4 +14,4 @@ const charities = [
   },
 ];
 
-export default charities;
+export { charities };

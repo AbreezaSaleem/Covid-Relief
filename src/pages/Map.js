@@ -1,12 +1,20 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import { Map, GoogleApiWrapper } from "google-maps-react";
 import Downshift from "downshift";
+import { charities } from "../content/charities";
 
 import "../styles/pages/map.scss";
 
 const items = ["Nationwide", "Lahore", "Multan"];
 
 const MapContainer = (props) => {
+  const [city, setCity] = useState("");
+  const [activeCharities, setActiveCharities] = useState([]);
+
+  useEffect(() => {
+    setActiveCharities(charities.filter((charity) => charity.city === city));
+  }, [city]);
+
   return (
     <div className="map-container">
       <Downshift>
@@ -21,52 +29,64 @@ const MapContainer = (props) => {
           selectedItem,
           inputValue,
           highlightedIndex,
-        }) => (
-          <div style={{ width: 250, margin: "auto" }}>
-            <div className="btn-group">
-              <button
-                type="button"
-                className="btn btn-primary"
-                style={{ display: "block" }}
-              >
-                {selectedItem ? selectedItem : "Select a city"}
-              </button>
-              <button
-                id="my-select"
-                type="button"
-                className="btn btn-primary dropdown-toggle dropdown-toggle-split"
-                onClick={toggleMenu}
-                data-toggle="dropdown"
-                aria-haspopup="true"
-                aria-expanded={isOpen}
-              >
-                <span className="sr-only">Toggle Dropdown</span>
-              </button>
-              {isOpen ? (
-                <div style={{ display: "block" }} className="dropdown-menu">
-                  {items.map((item) => (
-                    <button
-                      {...getItemProps({ item })}
-                      key={item}
-                      className="dropdown-item"
-                      style={{ cursor: "pointer" }}
-                    >
-                      {item}
-                    </button>
-                  ))}
-                </div>
-              ) : null}
+        }) => {
+          setCity(selectedItem);
+          return (
+            <div style={{ width: 250, margin: "auto" }}>
+              <div className="btn-group">
+                <button
+                  type="button"
+                  className="btn btn-primary"
+                  style={{ display: "block" }}
+                >
+                  {selectedItem ? selectedItem : "Select a city"}
+                </button>
+                <button
+                  id="my-select"
+                  type="button"
+                  className="btn btn-primary dropdown-toggle dropdown-toggle-split"
+                  onClick={toggleMenu}
+                  data-toggle="dropdown"
+                  aria-haspopup="true"
+                  aria-expanded={isOpen}
+                >
+                  <span className="sr-only">Toggle Dropdown</span>
+                </button>
+                {isOpen ? (
+                  <div style={{ display: "block" }} className="dropdown-menu">
+                    {items.map((item) => (
+                      <button
+                        {...getItemProps({ item })}
+                        key={item}
+                        className="dropdown-item"
+                        style={{ cursor: "pointer" }}
+                      >
+                        {item}
+                      </button>
+                    ))}
+                  </div>
+                ) : null}
+              </div>
             </div>
-          </div>
-        )}
+          );
+        }}
       </Downshift>
-      <Map
-        google={props.google}
-        zoom={8}
-        style={mapStyles}
-        containerStyle={containerStyle}
-        initialCenter={{ lat: 29.99211, lng: 71.390472 }}
-      />
+      <div>
+        <Map
+          google={props.google}
+          zoom={8}
+          style={mapStyles}
+          containerStyle={containerStyle}
+          initialCenter={{ lat: 29.99211, lng: 71.390472 }}
+        />
+        {city && (
+          <ul>
+            {activeCharities.map((charity) => (
+              <li>{charity.name}</li>
+            ))}
+          </ul>
+        )}
+      </div>
     </div>
   );
 };
