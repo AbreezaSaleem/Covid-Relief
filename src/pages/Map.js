@@ -12,7 +12,9 @@ const MapContainer = (props) => {
   const [activeCharities, setActiveCharities] = useState([]);
 
   useEffect(() => {
-    setActiveCharities(charities.filter((charity) => charity.city === city));
+    setActiveCharities(
+      charities.filter((charity) => charity.city === city || "Nationwide")
+    );
   }, [city]);
 
   return (
@@ -80,11 +82,17 @@ const MapContainer = (props) => {
           initialCenter={{ lat: 29.99211, lng: 71.390472 }}
         />
         {city && (
-          <ul>
-            {activeCharities.map((charity) => (
-              <li>{charity.name}</li>
-            ))}
-          </ul>
+          <div>
+            <h3>
+              Charities operating{" "}
+              {city === "Nationwide" ? "nationwide" : `in ${city}`}
+            </h3>
+            <ul>
+              {activeCharities.map((charity) => (
+                <li>{charity.name}</li>
+              ))}
+            </ul>
+          </div>
         )}
       </div>
     </div>
