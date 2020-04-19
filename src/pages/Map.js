@@ -6,42 +6,37 @@ import { charities } from "../content/charities";
 const items = ["Nationwide", "Lahore", "Multan"];
 
 const MapContainer = (props) => {
-  const [city, setCity] = useState("");
+  const [city, setCity] = useState("Nationwide");
   const [activeCharities, setActiveCharities] = useState([]);
 
   useEffect(() => {
     setActiveCharities(
-      charities.filter((charity) => charity.city === city || "Nationwide")
+      charities.filter((charity) => [city, "Nationwide"].includes(charity.city))
     );
   }, [city]);
 
-  const openCharity = event => {
+  const openCharity = (event) => {
     event.preventDefault();
     event.target.classList.toggle("active");
     let currentContent = event.target.nextElementSibling;
-    const allContents = document.getElementsByClassName('content');
-    for(let content of allContents) {
-      if(content === currentContent) {
-        if (content.style.maxHeight){
+    const allContents = document.getElementsByClassName("content");
+    for (let content of allContents) {
+      if (content === currentContent) {
+        if (content.style.maxHeight) {
           content.style.maxHeight = null;
         } else {
           content.style.maxHeight = content.scrollHeight + "px";
-        } 
+        }
       } else {
         content.style.maxHeight = null;
       }
     }
-  }
+  };
 
   return (
     <div className="map-container">
-      <Downshift>
-        {({
-          getItemProps,
-          isOpen,
-          toggleMenu,
-          selectedItem,
-        }) => {
+      <Downshift initialSelectedItem="Nationwide">
+        {({ getItemProps, isOpen, toggleMenu, selectedItem }) => {
           setCity(selectedItem);
           return (
             <div style={{ width: 250, margin: "auto" }}>
@@ -96,20 +91,40 @@ const MapContainer = (props) => {
             Charities operating{" "}
             {city === "Nationwide" ? "nationwide" : `in ${city}`}
           </h3>
-          {activeCharities.map((charity, index) => (
-            <div key={`${charity.name}-${index}`}>
-            <button key={`${index}-${charity.city}`} className="collapsible" onClick={openCharity}>{charity.name}</button>
-            <div className="content">
-              <p>{charity.webpage}</p>
-              <p>{charity.contact}</p>
-              <p>{charity.bankDetails[0].accountTitle}</p>
-              <p>{charity.bankDetails[0].bankName}</p>
-              <p>{charity.bankDetails[0].accountNumber}</p>
-              <p>{charity.bankDetails[0].iban}</p>
-              <p>{charity.bankDetails[0].swiftCode}</p>
-            </div>
-            </div>
-          ))}
+          {activeCharities.map((charity, index) => {
+            const {
+              bankName,
+              accountTitle,
+              accountNumber,
+              iban,
+              swiftCode,
+            } = charity.bankDetails[0];
+            return (
+              <div key={`${charity.name}-${index}`}>
+                <button
+                  key={`${index}-${charity.city}`}
+                  className="collapsible"
+                  onClick={openCharity}
+                >
+                  {charity.name}
+                </button>
+                <div className="content">
+                  {charity.webpage && (
+                    <p>
+                      Visit: <a href={charity.webpage}>{charity.webpage}</a>
+                    </p>
+                  )}
+                  {charity.contact && <p> Contact: {charity.contact}</p>}
+                  <h4>Bank Account Details</h4>
+                  {accountTitle && <p>Account name: {accountTitle}</p>}
+                  {bankName && <p>Bank: {bankName}</p>}
+                  {accountNumber && <p>Account Number: {accountNumber}</p>}
+                  {iban && <p>IBAN: {iban}</p>}
+                  {swiftCode && <p>Swift Code: {swiftCode}</p>}
+                </div>
+              </div>
+            );
+          })}
         </div>
       </div>
     </div>
