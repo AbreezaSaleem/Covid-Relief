@@ -5,3 +5,47 @@
 .heading {
   margin-bottom: 30px;
 }
+
+ul {
+  list-style-type: none;
+}
+
+.map-list-container {
+  display: flex;
+}
+
+.lists-container {
+  margin: 0px 20px;
+}
+
+.collapsible {
+  margin: 5px 0px;
+  border-radius: 8px;
+  background-color: $color-three;
+  color: white;
+  cursor: pointer;
+  padding: 18px;
+  width: 100%;
+  border: none;
+  text-align: left;
+  outline: none;
+  font-size: 20px;
+  transition: 0.5s;
+
+  &:hover {
+    background: $primary-color;
+    border-color: $primary-color;
+  }
+}
+
+.content {
+  padding: 0 18px;
+  max-height: 0;
+  overflow: hidden;
+  transition: max-height 0.2s ease-out;
+  background-color: #f1f1f1;
+
+  & > p {
+    font-size: 15px;
+  }
+}
