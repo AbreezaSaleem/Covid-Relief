@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React from "react";
 import { useNavigate } from "react-router-dom";
 
 import logo from "../images/logo.svg";
@@ -6,12 +6,7 @@ import logo from "../images/logo.svg";
 import Map from "./Map";
 
 function Dashboard() {
-  const navigate = useNavigate();
-
-  const handleClick = (event) => {
-    event.preventDefault();
-    navigate("donate");
-  };
+  // const navigate = useNavigate();
 
   return (
     <div className="container">
