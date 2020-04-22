@@ -1,9 +1,11 @@
 import React, { useState, useEffect } from "react";
 import { Map, GoogleApiWrapper } from "google-maps-react";
 import Downshift from "downshift";
+import Marker from "../components/Marker";
 import { charities } from "../content/charities";
 
 const items = ["Nationwide", "Lahore", "Multan"];
+const LahoreMarkers = { lat: 31.5204, lng: 74.3587 };
 
 const MapContainer = (props) => {
   const [city, setCity] = useState("Nationwide");
@@ -84,8 +86,10 @@ const MapContainer = (props) => {
           zoom={8}
           style={mapStyles}
           containerStyle={containerStyle}
-          initialCenter={{ lat: 29.99211, lng: 71.390472 }}
-        />
+          initialCenter={LahoreMarkers}
+        >
+          <Marker lat={31.5204} lng={74.3587} name="My Marker" color="blue" />
+        </Map>
         <div className="lists-container">
           <h3>
             Charities operating{" "}
