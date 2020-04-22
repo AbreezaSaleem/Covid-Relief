@@ -15,8 +15,19 @@ function Dashboard() {
           We're collecting data on charities working on raising funds and
           distribution of ration among needy in Pakistan. If you are looking to
           donate, search the city in the dropdown below. If you would like to
-          contribute (i.e add a charity to the list please contribute on GitHub)
+          add a charity or individual/organisation working to mitigate the pain
+          of the common people, please click on the Add Charity button and fill
+          the Google Form.
         </div>
+        <a
+          href="https://forms.gle/XairQb6U5mdkAUWs9"
+          class="charity-button"
+          role="button"
+          target="_blank"
+          rel="noopener noreferrer"
+        >
+          Add Charity
+        </a>
         <div className="map">
           <Map />
         </div>
