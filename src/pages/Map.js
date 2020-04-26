@@ -1,11 +1,14 @@
 import React, { useState, useEffect } from "react";
-import { Map, GoogleApiWrapper } from "google-maps-react";
+import { Map, GoogleApiWrapper, Marker } from "google-maps-react";
 import Downshift from "downshift";
-import Marker from "../components/Marker";
+import Swal from 'sweetalert2'
+
+// import Marker from "../components/Marker";
+
 import { charities } from "../content/charities";
+import { markers } from "../content/markers";
 
 const items = ["Nationwide", "Lahore", "Multan"];
-const LahoreMarkers = { lat: 31.5204, lng: 74.3587 };
 
 const MapContainer = (props) => {
   const [city, setCity] = useState("Nationwide");
@@ -34,6 +37,43 @@ const MapContainer = (props) => {
       }
     }
   };
+
+  const sendMessage = name => event => {
+    event.preventDefault();
+    Swal.fire({
+      title: 'Please enter the number you want to send this message to',
+      input: 'text',
+      inputAttributes: {
+        autocapitalize: 'off'
+      },
+      showCancelButton: true,
+      confirmButtonText: 'Enter',
+      showLoaderOnConfirm: true,
+      preConfirm: (number) => {
+        return fetch(`/message`, {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json'
+          },
+          body: JSON.stringify({number, name})
+        })
+          .then(res => res.json())
+          .then(data => {
+            console.log('data success!', data)
+          });
+      },
+      allowOutsideClick: () => !Swal.isLoading()
+    }).then((result) => {
+      if (result.value) {
+        Swal.fire({
+          icon: 'success',
+          title: 'Message has been sent!',
+          showConfirmButton: false,
+          timer: 3500
+        });
+      }
+    })
+  }
 
   return (
     <div className="map-container">
@@ -83,12 +123,12 @@ const MapContainer = (props) => {
       <div className="map-list-container">
         <Map
           google={props.google}
-          zoom={8}
+          zoom={5.5}
           style={mapStyles}
           containerStyle={containerStyle}
-          initialCenter={LahoreMarkers}
+          initialCenter={{ lat: 29.935612, lng: 69.563417 }}
         >
-          <Marker lat={31.5204} lng={74.3587} name="My Marker" color="blue" />
+          {markers.map(({lat, lng}, index) => <Marker key={index} position={{lat, lng}} name="My Marker" color="blue" />)}
         </Map>
         <div className="lists-container">
           <h3>
@@ -114,17 +154,18 @@ const MapContainer = (props) => {
                 </button>
                 <div className="content">
                   {charity.webpage && (
-                    <p>
+                    <p style={{"marginTop": 8}}>
                       Visit: <a href={charity.webpage}>{charity.webpage}</a>
                     </p>
                   )}
                   {charity.contact && <p> Contact: {charity.contact}</p>}
-                  <h4>Bank Account Details</h4>
+                  <h4>Click <a id="message" onClick={sendMessage(charity.name)}>here</a> to get details on your phone!</h4>
+                  {/* <h4>Bank Account Details</h4>
                   {accountTitle && <p>Account name: {accountTitle}</p>}
                   {bankName && <p>Bank: {bankName}</p>}
                   {accountNumber && <p>Account Number: {accountNumber}</p>}
                   {iban && <p>IBAN: {iban}</p>}
-                  {swiftCode && <p>Swift Code: {swiftCode}</p>}
+                  {swiftCode && <p>Swift Code: {swiftCode}</p>} */}
                 </div>
               </div>
             );
@@ -150,5 +191,5 @@ const mapStyles = {
 };
 
 export default GoogleApiWrapper({
-  apiKey: process.env.REACT_APP_GOOLE_MAP_TOKEN,
+  apiKey: process.env.REACT_APP_GOOGLE_MAP_TOKEN,
 })(MapContainer);

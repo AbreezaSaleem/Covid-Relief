@@ -1,8 +1,6 @@
 import React from "react";
 import { useNavigate } from "react-router-dom";
 
-import logo from "../images/logo.svg";
-
 import Map from "./Map";
 
 function Dashboard() {
