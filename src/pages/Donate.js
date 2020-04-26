@@ -8,10 +8,6 @@ const Donate = () => {
     charity: '',
   })
 
-  useEffect(() => {
-    console.log('state changed', state)
-  }, [state])
-
   const handleChange = event => {
     const { name, value } = event.target;
     setState({
