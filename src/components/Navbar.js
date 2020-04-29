@@ -4,7 +4,9 @@ function Navbar() {
   return (
     <nav className="w-100 navbar navbar-expand-lg navbar-light navbar-container">
       <a className="navbar-brand" href="/">
-        Covid Relief Pakistan
+        <h2>
+          <strong>Covid Relief Pakistan</strong>
+        </h2>
       </a>
       <button
         className="navbar-toggler"
