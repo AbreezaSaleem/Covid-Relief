@@ -24,3 +24,4 @@ yarn-error.log*
 
 # env files
 twilio.env
+.env 
