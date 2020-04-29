@@ -32,6 +32,10 @@ ul {
   font-size: 20px;
   transition: 0.5s;
 
+  &:focus {
+    outline: 0;
+  }
+
   &:hover {
     background: $primary-color;
     border-color: $primary-color;
@@ -44,6 +48,14 @@ ul {
   overflow: hidden;
   transition: max-height 0.2s ease-out;
   background-color: #f1f1f1;
+
+  & > h4 > #message {
+    color: #ff000094;
+
+    &:hover {
+      cursor: pointer;
+    }
+  }
 
   & > p {
     font-size: 15px;
