@@ -10,12 +10,12 @@ function Dashboard() {
     <div className="container">
       <div className="dashboard-container">
         <div className="mission-statement">
-          We're collecting data on charities working on raising funds and
-          distribution of ration among needy in Pakistan. If you are looking to
-          donate, search the city in the dropdown below. If you would like to
-          add a charity or individual/organisation working to mitigate the pain
-          of the common people, please click on the Add Charity button and fill
-          the Google Form.
+          <p>
+            We're collecting data on charities working on raising funds and
+            distribution of ration among Covid-19 affectees in Pakistan. If you
+            would like to donate, find a charity operating in a particular city
+            or nationwide below.{" "}
+          </p>
         </div>
         <a
           href="https://forms.gle/XairQb6U5mdkAUWs9"
