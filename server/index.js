@@ -1,7 +1,6 @@
 const path = require("path");
 const express = require("express");
 const bodyParser = require("body-parser");
-const pino = require("express-pino-logger")();
 
 require("dotenv").config({ path: path.resolve(__dirname, "../.env") });
 
