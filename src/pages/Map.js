@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 import { Map, GoogleApiWrapper, Marker } from "google-maps-react";
 import Downshift from "downshift";
 import Swal from 'sweetalert2'
+import { parsePhoneNumberFromString } from 'libphonenumber-js'
 
 // import Marker from "../components/Marker";
 
@@ -49,18 +50,40 @@ const MapContainer = (props) => {
       showCancelButton: true,
       confirmButtonText: 'Enter',
       showLoaderOnConfirm: true,
+      inputValidator: (value) => {
+        const phoneNumber = parsePhoneNumberFromString(value, 'PK')
+        if(phoneNumber) {
+          if(phoneNumber.country !== 'PK' || !phoneNumber.isValid()) {
+            return 'Please enter a valid PK number!'
+          }
+        }
+        if (!value) {
+          return 'Please enter something!'
+        }
+      },
       preConfirm: (number) => {
-        return fetch(`/message`, {
-          method: 'POST',
-          headers: {
-            'Content-Type': 'application/json'
-          },
-          body: JSON.stringify({number, name})
-        })
-          .then(res => res.json())
-          .then(data => {
-            console.log('data success!', data)
-          });
+        const phoneNumber = parsePhoneNumberFromString(number, 'PK')
+        if(phoneNumber) {
+          const formattedNumber = phoneNumber.number
+          return fetch(`/message`, {
+            method: 'POST',
+            headers: {
+              'Content-Type': 'application/json'
+            },
+            body: JSON.stringify({number: formattedNumber, name})
+          })
+          .then(response => response.json())
+          .then(response => {
+            if (!response.success) {
+              throw new Error()
+            }
+          })
+          .catch(error => {
+            Swal.showValidationMessage(
+              `Request failed: ${error}`
+            )
+          })
+        }
       },
       allowOutsideClick: () => !Swal.isLoading()
     }).then((result) => {
@@ -126,7 +149,7 @@ const MapContainer = (props) => {
           zoom={5.5}
           style={mapStyles}
           containerStyle={containerStyle}
-          initialCenter={{ lat: 29.935612, lng: 69.563417 }}
+          center={{ lat: 29.935612, lng: 69.563417 }}
         >
           {markers.map(({lat, lng}, index) => <Marker key={index} position={{lat, lng}} name="My Marker" color="blue" />)}
         </Map>

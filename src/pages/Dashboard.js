@@ -19,7 +19,7 @@ function Dashboard() {
         </div>
         <a
           href="https://forms.gle/XairQb6U5mdkAUWs9"
-          class="charity-button"
+          className="charity-button"
           role="button"
           target="_blank"
           rel="noopener noreferrer"
