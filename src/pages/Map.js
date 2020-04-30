@@ -39,16 +39,16 @@ const MapContainer = (props) => {
     }
   };
 
-  const sendMessage = name => event => {
+  const sendMessage = (name) => (event) => {
     event.preventDefault();
     Swal.fire({
-      title: 'Please enter the number you want to send this message to',
-      input: 'text',
+      title: "Please enter the number you want to send this message to",
+      input: "text",
       inputAttributes: {
-        autocapitalize: 'off'
+        autocapitalize: "off",
       },
       showCancelButton: true,
-      confirmButtonText: 'Enter',
+      confirmButtonText: "Enter",
       showLoaderOnConfirm: true,
       inputValidator: (value) => {
         const phoneNumber = parsePhoneNumberFromString(value, 'PK')
@@ -85,18 +85,18 @@ const MapContainer = (props) => {
           })
         }
       },
-      allowOutsideClick: () => !Swal.isLoading()
+      allowOutsideClick: () => !Swal.isLoading(),
     }).then((result) => {
       if (result.value) {
         Swal.fire({
-          icon: 'success',
-          title: 'Message has been sent!',
+          icon: "success",
+          title: "Message has been sent!",
           showConfirmButton: false,
-          timer: 3500
+          timer: 3500,
         });
       }
-    })
-  }
+    });
+  };
 
   return (
     <div className="map-container">
@@ -151,7 +151,14 @@ const MapContainer = (props) => {
           containerStyle={containerStyle}
           center={{ lat: 29.935612, lng: 69.563417 }}
         >
-          {markers.map(({lat, lng}, index) => <Marker key={index} position={{lat, lng}} name="My Marker" color="blue" />)}
+          {markers.map(({ lat, lng }, index) => (
+            <Marker
+              key={index}
+              position={{ lat, lng }}
+              name="My Marker"
+              color="blue"
+            />
+          ))}
         </Map>
         <div className="lists-container">
           <h3>
@@ -177,12 +184,18 @@ const MapContainer = (props) => {
                 </button>
                 <div className="content">
                   {charity.webpage && (
-                    <p style={{"marginTop": 8}}>
+                    <p style={{ marginTop: 8 }}>
                       Visit: <a href={charity.webpage}>{charity.webpage}</a>
                     </p>
                   )}
                   {charity.contact && <p> Contact: {charity.contact}</p>}
-                  <h4>Click <a id="message" onClick={sendMessage(charity.name)}>here</a> to get details on your phone!</h4>
+                  <h4>
+                    Click{" "}
+                    <a id="message" onClick={sendMessage(charity.name)}>
+                      here
+                    </a>{" "}
+                    to get details on your phone!
+                  </h4>
                   {/* <h4>Bank Account Details</h4>
                   {accountTitle && <p>Account name: {accountTitle}</p>}
                   {bankName && <p>Bank: {bankName}</p>}

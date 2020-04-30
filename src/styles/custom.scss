@@ -1,21 +1,19 @@
-@import url('https://fonts.googleapis.com/css2?family=Baloo+Paaji+2&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=Baloo+Paaji+2&display=swap");
 
 $background-color: #82ecff17;
 $primary-color: #17a2b8;
-$color-two: #00B9B9;
+$color-two: #00b9b9;
 $color-three: #3aceada1;
-$color-four: #78E098;
-$color-five: #B6EF81;
-$color-six: #F9F871;
-
+$color-four: #78e098;
+$color-five: #b6ef81;
+$color-six: #f9f871;
 
 // Components
 @import "components/navbar";
-@import "components/marker";
 
 // Pages
 @import "pages/dashboard";
 @import "pages/donate";
 @import "pages/map";
 
-@import '~bootstrap/scss/bootstrap.scss';
+@import "~bootstrap/scss/bootstrap.scss";

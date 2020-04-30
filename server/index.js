@@ -1,13 +1,13 @@
 const path = require("path");
 const express = require("express");
 const bodyParser = require("body-parser");
-const pino = require("express-pino-logger")();
 
 require("dotenv").config({ path: path.resolve(__dirname, "../.env") });
 
 const app = express();
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
+app.use(express.static(path.join(__dirname, "../build")));
 // app.use(pino);
 const port = 8000;
 
@@ -32,6 +32,10 @@ function constuctMessage(content) {
   var message = `Charity name: ${content.name}\nwebsite: ${webpage}\nContact Number: ${contactNumber}\nEasyPaisa: ${easyPaisa}\nBank Details are as follows\nAccount Title: ${accountTitle}\nBank Name: ${bankName}\nAccount Number: ${accountNumber}\nIBAN: ${iban}\nRamadan Mubarak!`;
   return message;
 }
+
+app.get("/*", (req, res) => {
+  res.sendFile(path.join(__dirname, "build", "index.html"));
+});
 
 app.post("/message", (req, res) => {
   res.header("Content-Type", "application/json");

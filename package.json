@@ -17,11 +17,12 @@
     "react-router": "^6.0.0-alpha.3",
     "react-router-dom": "^6.0.0-alpha.3",
     "react-scripts": "3.4.1",
+    "serve": "^11.3.0",
     "sweetalert2": "^9.10.12"
   },
   "proxy": "http://localhost:8000",
   "scripts": {
-    "start": "react-scripts start REACT_APP_GOOLE_MAP_TOKEN=AIzaSyASl4lyuO8_aLBwXIrHmAq9_wdKuwg5Xg4",
+    "start": "node server/index.js REACT_APP_GOOLE_MAP_TOKEN=AIzaSyASl4lyuO8_aLBwXIrHmAq9_wdKuwg5Xg4",
     "build": "react-scripts build",
     "test": "react-scripts test",
     "eject": "react-scripts eject"
@@ -44,8 +45,10 @@
   "devDependencies": {
     "body-parser": "^1.19.0",
     "express": "^4.17.1",
-    "express-pino-logger": "^4.0.0",
     "nodemon": "^2.0.3",
     "twilio": "^3.42.2"
+  },
+  "engines": {
+    "node": "13.12.0"
   }
 }
