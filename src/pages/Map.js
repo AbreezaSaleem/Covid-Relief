@@ -53,9 +53,11 @@ const MapContainer = (props) => {
       inputValidator: (value) => {
         const phoneNumber = parsePhoneNumberFromString(value, 'PK')
         if(phoneNumber) {
-          if(phoneNumber.country !== 'PK' || !phoneNumber.isValid()) {
-            return 'Please enter a valid PK number!'
+          if(!phoneNumber.isValid()) {
+            return 'Please enter a valid PK or a US number!'
           }
+        } else {
+          return 'Please enter a numeric phone nummber!'
         }
         if (!value) {
           return 'Please enter something!'
@@ -80,7 +82,7 @@ const MapContainer = (props) => {
           })
           .catch(error => {
             Swal.showValidationMessage(
-              `Request failed: ${error}`
+              `Sorry we don't support messages in this area.`
             )
           })
         }
