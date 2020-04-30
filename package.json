@@ -19,7 +19,7 @@
     "react-scripts": "3.4.1",
     "serve": "^11.3.0",
     "sweetalert2": "^9.10.12",
-    "twilio": "^3.42.2"
+    "twilio": "3.42.2"
   },
   "proxy": "http://localhost:8000",
   "scripts": {
