@@ -4,7 +4,7 @@
  
 # Covid Relief Pakistan
 
-[![Heroku CI Status](https://pacific-headland-81140.herokuapp.com/last.svg)](https://dashboard.heroku.com/pipelines/e2f44306-3325-495c-8d8e-05a953c2c11f/tests)
+[![Deploy](https://www.herokucdn.com/deploy/button.png)](https://heroku.com/deploy)
 
 
 ## About

@@ -1,0 +1,7 @@
+{
+  "name": "Covid Relief Pakistan",
+  "description": "A Node.js app using Express 4 and React",
+  "repository": "https://github.com/AbreezaSaleem/Covid-Relief",
+  "logo": "https://node-js-sample.herokuapp.com/node.svg",
+  "keywords": ["node", "express", "static", "react"]
+}
