@@ -6,6 +6,11 @@
 
 [![Deploy](https://www.herokucdn.com/deploy/button.png)](https://heroku.com/deploy)
 
+## Authors
+
+* [Abreeza Saleem](https://github.com/aliahsan07)
+* [Ali Ahsan](https://github.com/aliahsan07)
+
 ## Demo
 [Heroku App](https://pacific-headland-81140.herokuapp.com/)
 
