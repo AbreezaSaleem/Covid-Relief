@@ -1,68 +1,117 @@
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+<a  href="https://www.twilio.com">
+<img  src="https://static0.twilio.com/marketing/bundles/marketing/img/logos/wordmark-red.svg"  alt="Twilio"  width="250"  />
+</a>
+ 
+# Covid Relief Pakistan
 
-## Available Scripts
+[![Heroku CI Status](https://pacific-headland-81140.herokuapp.com/last.svg)](https://dashboard.heroku.com/pipelines/e2f44306-3325-495c-8d8e-05a953c2c11f/tests)
 
-In the project directory, you can run:
 
-### `yarn start`
+## About
 
-Runs the app in the development mode.<br />
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+This is the source code for Covid Relief Pakistan project. It consists of a node backend which serves a React SPA. The application consumes Twilio SMS API to send details about a charity to users. 
 
-The page will reload if you make edits.<br />
-You will also see any lint errors in the console.
 
-### `yarn test`
+## Features
 
-Launches the test runner in the interactive watch mode.<br />
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+- Node.js web server using [Express.js](https://npm.im/express)
+- React for User interface[React](https://reactjs.org/)
+- The application is deployed on heroku[Heroku](https://heroku.com)
+- Linting and formatting using [ESLint](https://npm.im/eslint) and [Prettier](https://npm.im/prettier)
+- Project specific environment variables using `.env` files and [`dotenv-safe`](https://npm.im/dotenv-safe) by comparing `.env.example` and `.env`.
+- One click deploy buttons for Heroku
+
+
+## Set up
+
+### Requirements
+
+- [Node.js](https://nodejs.org/)
+- [React](https://reactjs.org/)
+- A Twilio account - [sign up](https://www.twilio.com/try-twilio)
+
+### Twilio Account Settings
+
+This application should give you a ready-made starting point for writing your
+own appointment reminder application. Before we begin, we need to collect
+all the config values we need to run the application:
+
+| Config&nbsp;Value | Description                                                                                                                                                  |
+| :---------------- | :----------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| Account&nbsp;Sid  | Your primary Twilio account identifier - find this [in the Console](https://www.twilio.com/console).                                                         |
+| Auth&nbsp;Token   | Used to authenticate - [just like the above, you'll find this here](https://www.twilio.com/console).                                                         |
+| Phone&nbsp;number | A Twilio phone number in [E.164 format](https://en.wikipedia.org/wiki/E.164) - you can [get one here](https://www.twilio.com/console/phone-numbers/incoming) |
+
+### Local development
+
+After the above requirements have been met:
+
+1. Clone this repository and `cd` into it
+
+```bash
+git clone git@github.com:Abreeza-Saleem/Covid-Relief.git
+cd Covid-Relief
+```
+
+2. Install dependencies
+
+```bash
+npm install
+```
+
+3. Set your environment variables
+
+Place your env variables inside the .env file. The three environmental variables required are:
+- TWILIO_ACCOUNT_SID=xxxx
+- TWILIO_PHONE_NUMBER=xxxxxx
+- TWILIO_AUTH_TOKEN=xxxxxx
+
+See [Twilio Account Settings](#twilio-account-settings) to locate the necessary environment variables.
+
+1. Run the application
+
+In the project directory, first run:
 
 ### `yarn build`
 
-Builds the app for production to the `build` folder.<br />
-It correctly bundles React in production mode and optimizes the build for the best performance.
+This builds the app for production to the `build` folder.<br />
 
-The build is minified and the filenames include the hashes.<br />
-Your app is ready to be deployed!
+Then run: 
+### `yarn start`
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+Runs the node app in the development mode.It serves the react app from the build folder.<br />
+Open [http://localhost:8000] to run it in the browser.
 
-### `yarn eject`
+That's it!
 
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
+### Cloud deployment
 
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+Additionally to trying out this application locally, you can deploy it to a variety of host services. Here is a small selection of them.
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
+Please be aware that some of these might charge you for the usage or might make the source code for this application visible to the public. When in doubt research the respective hosting service first.
 
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
+| Service                           |                                                                                                                                                                                                                           |
+| :-------------------------------- | :------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
+| [Heroku](https://www.heroku.com/) | [![Deploy](https://www.herokucdn.com/deploy/button.svg)](https://heroku.com/deploy)                                                                                                                                       |
+| [Glitch](https://glitch.com)      | [![Remix on Glitch](https://cdn.glitch.com/2703baf2-b643-4da7-ab91-7ee2a2d00b5b%2Fremix-button.svg)](https://glitch.com/edit/#!/remix/clone-from-repo?REPO_URL=https://github.com/twilio-labs/sample-template-nodejs.git) |
+| [Zeit](https://zeit.co/)          | [![Deploy with ZEIT Now](https://zeit.co/button)](https://zeit.co/new/project?template=https://github.com/twilio-labs/sample-template-nodejs/tree/master)                                                                 |
 
-## Learn More
+## Resources
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+- [GitHub's repository template](https://help.github.com/en/github/creating-cloning-and-archiving-repositories/creating-a-repository-from-a-template) functionality
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+## Contributing
 
-### Code Splitting
+This template is open source and welcomes contributions. All contributions are subject to our [Code of Conduct](https://github.com/twilio-labs/.github/blob/master/CODE_OF_CONDUCT.md).
 
-This section has moved here: https://facebook.github.io/create-react-app/docs/code-splitting
+[Visit the project on GitHub](https://github.com/AbreezaSaleem/Covid-Relief)
 
-### Analyzing the Bundle Size
+## License
 
-This section has moved here: https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size
+[MIT](http://www.opensource.org/licenses/mit-license.html)
 
-### Making a Progressive Web App
+## Disclaimer
 
-This section has moved here: https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app
+No warranty expressed or implied. Software is as is.
 
-### Advanced Configuration
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/advanced-configuration
-
-### Deployment
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/deployment
-
-### `yarn build` fails to minify
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify
+[twilio]: https://www.twilio.com
