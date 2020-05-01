@@ -11,12 +11,16 @@
 
 This is the source code for Covid Relief Pakistan project. It consists of a node backend which serves a React SPA. The application consumes Twilio SMS API to send details about a charity to users. 
 
+The app has a single user screen that gives user an option to select a city from the dropdown. Upon selecting, the app shows a list of charities operating in that city. To get more details about a charity through Twilio SMS API, click on the charity and provide your number.
+
+Users can also help us by filling out the Google Form that can be reached by clicking the `Add Charity` button on the homepage. The data we get is vetted manually and then added as md files to the project.
+
 
 ## Features
 
 - Node.js web server using [Express.js](https://npm.im/express)
-- React for User interface[React](https://reactjs.org/)
-- The application is deployed on heroku[Heroku](https://heroku.com)
+- React for User interface [React](https://reactjs.org/)
+- The application is deployed on heroku [Heroku](https://heroku.com)
 - Linting and formatting using [ESLint](https://npm.im/eslint) and [Prettier](https://npm.im/prettier)
 - Project specific environment variables using `.env` files and [`dotenv-safe`](https://npm.im/dotenv-safe) by comparing `.env.example` and `.env`.
 - One click deploy buttons for Heroku
@@ -32,8 +36,7 @@ This is the source code for Covid Relief Pakistan project. It consists of a node
 
 ### Twilio Account Settings
 
-This application should give you a ready-made starting point for writing your
-own appointment reminder application. Before we begin, we need to collect
+This application is ready for consumption, we only need to collect
 all the config values we need to run the application:
 
 | Config&nbsp;Value | Description                                                                                                                                                  |
