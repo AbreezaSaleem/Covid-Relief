@@ -8,7 +8,7 @@
 
 ## Authors
 
-* [Abreeza Saleem](https://github.com/aliahsan07)
+* [Abreeza Saleem](https://github.com/abreezasaleem)
 * [Ali Ahsan](https://github.com/aliahsan07)
 
 ## Demo
