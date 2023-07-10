@@ -10,7 +10,7 @@
     "bootstrap": "^4.4.1",
     "downshift": "^5.1.1",
     "google-maps-react": "^2.0.2",
-    "libphonenumber-js": "^1.7.51",
+    "libphonenumber-js": "^1.10.37",
     "node-sass": "^4.13.1",
     "react": "^16.13.1",
     "react-dom": "^16.13.1",
